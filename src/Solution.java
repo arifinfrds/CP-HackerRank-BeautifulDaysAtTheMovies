@@ -2,6 +2,11 @@ import java.util.ArrayList;
 
 public class Solution {
 
+  public static void main(String[] args) {
+    // i, j, k
+    System.out.println(beautifulDays(20, 23, 6));
+  }
+
   // Complete the beautifulDays function below.
   static int beautifulDays(int startingDayNumber, int endingDayNumber, int divisor) {
     int[] numbers = generateNumbers(startingDayNumber, endingDayNumber);
@@ -27,6 +32,11 @@ public class Solution {
     return numbersInt;
   }
 
+  private static boolean isBeautifulDay(int dayNumber, int divisor) {
+    int absoluteDifference = Math.abs(dayNumber - getReversedNumber(dayNumber));
+    return absoluteDifference % divisor == 0;
+  }
+
   private static int getReversedNumber(int number) {
     int n = number;
     int reversedNumber = 0;
@@ -36,16 +46,6 @@ public class Solution {
       n = n / 10;
     }
     return reversedNumber;
-  }
-
-  private static boolean isBeautifulDay(int dayNumber, int divisor) {
-    int absoluteDifference = Math.abs(dayNumber - getReversedNumber(dayNumber));
-    return absoluteDifference % divisor == 0;
-  }
-
-  public static void main(String[] args) {
-    // i, j, k
-    System.out.println(beautifulDays(20, 23, 6));
   }
 
 }
